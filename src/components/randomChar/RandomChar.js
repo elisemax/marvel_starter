@@ -20,9 +20,7 @@ class RandomChar extends Component{
     componentWillUnmount(){
         //clearInterval(this.timerId);
     }
-    onCharLoaded = (char) =>{
-        this.setState({char, loading:false});
-    }
+  
     updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000)+1011000);
         this.onCharLoading();
@@ -39,6 +37,9 @@ class RandomChar extends Component{
             loading:false,
             error:true
         });
+    }
+    onCharLoaded = (char) =>{
+        this.setState({char, loading:false});
     }
     render(){
         const {char,loading, error} = this.state;
