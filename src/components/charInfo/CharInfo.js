@@ -78,10 +78,10 @@ const View = ({char}) =>{
                     <div>
                         <div className="char__info-name">{name}</div>
                         <div className="char__btns">
-                            <a href={homepage} className="button button__main">
+                            <a href={homepage} className="button button__main" data-cy="randomchar__btns__homepage__id">
                                 <div className="inner">homepage</div>
                             </a>
-                            <a href={wiki} className="button button__secondary">
+                            <a href={wiki} className="button button__secondary" data-cy="randomchar__btns__homepage__id">
                                 <div className="inner">Wiki</div>
                             </a>
                         </div>
@@ -95,7 +95,7 @@ const View = ({char}) =>{
                     {comics.length> 0 ? null : "There is no comics with this character"}
                     {
                         comics.map((item, i)=>{
-                            if(i>9) return;
+                            if(i>9) {return null;}
                             return(
                                 <li key={i} className="char__comics-item">
                                     {item.name}
