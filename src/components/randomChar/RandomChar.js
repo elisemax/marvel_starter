@@ -2,15 +2,13 @@ import { useState, useEffect} from 'react';
 import Spinner from '../spinner/Spinner'
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
-import MarvelService from '../../services/MarvelServices';
+import useMarvelService from '../../services/MarvelServices';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 const RandomChar = () => {
 
-    const [char, setChar] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [char, setChar] = useState(null);
+    const {loading, error, getCharacter} = useMarvelService();
 
-    const marvelService = new MarvelService();
 
     useEffect(() => {
         updateChar();
@@ -23,18 +21,10 @@ const RandomChar = () => {
   
     const updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000)+1011000);
-        onCharLoading();
-        marvelService.getCharacter(id).then(onCharLoaded).catch(onError);
+        getCharacter(id).then(onCharLoaded);
     }
-    const onCharLoading = () =>{
-        setLoading(true);
-    }
-    const onError = () =>{
-        setError(true);
-        setLoading(false);
-    }
+
     const onCharLoaded = (char) =>{
-        setLoading(false);
         setChar(char);
     }
 
@@ -63,7 +53,7 @@ const RandomChar = () => {
         )
 }
 
-const View = ({char}) =>{
+const View = (char) =>{
 
     const {name, description, thumbnail, homepage, wiki} = char;
     let imgStyle = {'objectFit' : 'cover'};
