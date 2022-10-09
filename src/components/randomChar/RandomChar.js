@@ -13,20 +13,21 @@ const RandomChar = () => {
     useEffect(() => {
         updateChar();
         const timerId = setInterval(updateChar, 60000);
-
         return () => {
             clearInterval(timerId)
         }
     }, []);
   
+
+    const onCharLoaded = (char) =>{
+        setChar(char);
+    }
+
     const updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000)+1011000);
         getCharacter(id).then(onCharLoaded);
     }
 
-    const onCharLoaded = (char) =>{
-        setChar(char);
-    }
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
