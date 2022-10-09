@@ -1,9 +1,10 @@
 import { useState, useEffect} from 'react';
 import Spinner from '../spinner/Spinner'
-import './randomChar.scss';
+
 import mjolnir from '../../resources/img/mjolnir.png';
 import useMarvelService from '../../services/MarvelServices';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import './randomChar.scss';
 const RandomChar = () => {
 
     const [char, setChar] = useState(null);
