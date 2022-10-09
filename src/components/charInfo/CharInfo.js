@@ -17,7 +17,8 @@ const CharInfo = (props) => {
         if(!charId){
             return;
         }
-        getCharacter(charId).then(onCharLoaded)
+        getCharacter(charId)
+            .then(onCharLoaded)
     }
     const onCharLoaded = (char) =>{
         setChar(char);
