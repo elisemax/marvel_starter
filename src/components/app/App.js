@@ -11,12 +11,8 @@ const App = () => {
                 <AppHeader/>
              <main>
             <Routes>
-                <Route path="/comics" exact element={<ComicsPage/>}>
-
-                </Route>
-                <Route path="/" exact element={<MainPage/>}>
-
-            </Route>
+                <Route path="/comics" element={<ComicsPage/>}/>
+                <Route path="/" element={<MainPage/>}/>
             </Routes>
             </main> 
             </div>
