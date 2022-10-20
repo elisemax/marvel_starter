@@ -30,6 +30,7 @@ const ComicsList = () => {
     const {getAllComics,process,setProcess} = useMarvelService();
     useEffect(() => {
         onRequest(offset, true);
+        // eslint-disable-next-line
     }, []);
     const onRequest = (offset, initial) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);

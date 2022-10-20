@@ -2,8 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import setContent from '../../utils/setContent';
 import useMarvelService from '../../services/MarvelService';
-import Spinner from '../spinner/Spinner';
-import ErrorMessage from '../errorMessage/ErrorMessage';
 import AppBanner from "../appBanner/AppBanner";
 
 
@@ -13,7 +11,8 @@ const SinglePage = ({Component, dataType}) => {
         const {getComic, getCharacter, clearError, process, setProcess} = useMarvelService();
 
         useEffect(() => {
-            updateData()
+            updateData();
+            // eslint-disable-next-line
         }, [id])
 
         const updateData = () => {
@@ -22,8 +21,10 @@ const SinglePage = ({Component, dataType}) => {
             switch (dataType) {
                 case 'comic':
                     getComic(id).then(onDataLoaded).then(() => {setProcess('success');});
+                    break;
                 case 'character':
                     getCharacter(id).then(onDataLoaded).then(() => {setProcess('success');});
+                    break;
                 default:
                     return;
             }

@@ -31,6 +31,7 @@ const CharList = (props) => {
 
     useEffect(() => {
         onRequest(offset, true);
+        // eslint-disable-next-line
     }, [])
 
     const onRequest = (offset, initial) => {
@@ -105,7 +106,9 @@ const CharList = (props) => {
         )
     }
     const elements = useMemo(() => {
-        return setContent(process,()=> renderItems(charList),newItemLoading)},[process]);
+        return setContent(process,()=> renderItems(charList),newItemLoading)},
+        // eslint-disable-next-line
+        [process]);
     return (
         <div className="char__list">
             {elements}
